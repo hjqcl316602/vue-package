@@ -1,0 +1,20 @@
+@import "./theme.less";
+
+/**
+* 边框
+*/
+.vui-border {
+  position: relative;
+}
+
+.vui-border:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  border-width: 0;
+  border-color: aquamarine;
+}

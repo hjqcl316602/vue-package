@@ -1,0 +1,51 @@
+@import "./theme.less";
+
+.vui-message {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.vui-message.vui-message--active {
+  transform: translateY(0);
+}
+
+.vui-message span {
+  line-height: 1.5;
+}
+
+.vui-message--danger {
+  background-color: @color-danger;
+}
+
+.vui-message--warning {
+  background-color: @color-warning;
+}
+
+.vui-message--success {
+  background-color: @color-success;
+}
+
+.vui-message--primary {
+  background-color: @color-primary;
+}
+
+.vui-message--default {
+  background-color: #000;
+}
+
+// 用于防止用户操作，比如单击按钮后再次提交
+.vui-message--locked {
+  * {
+    pointer-events: none;
+  }
+}

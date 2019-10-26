@@ -1,0 +1,45 @@
+@import "./theme.less";
+
+.vui-confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  background-color: #fff;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.vui-confirm.vui-confirm--active {
+  transform: translateY(0);
+}
+
+.vui-confirm .vui-confirm__content {
+  width: 100%;
+  display: block;
+}
+
+.vui-confirm .vui-confirm__header,
+.vui-confirm .vui-confirm__footer {
+  width: 100%;
+  display: block;
+  padding: 10px;
+}
+
+.vui-confirm .vui-confirm__header--message {
+  line-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: @color-primary;
+  text-align: center;
+}
+
+.vui-confirm .vui-confirm__footer-btn {
+  text-align: right;
+}

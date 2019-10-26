@@ -1,0 +1,42 @@
+@import "./theme.less";
+.vui-action-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: @z-index-action;
+}
+.vui-action-wrap .vui-action {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: @color-bg;
+}
+
+.vui-action-wrap.is-action--animate {
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+}
+.vui-action-wrap.is-action--animate.is-action--animate-active {
+  transform: translateY(0);
+}
+
+.vui-action-wrap .vui-action-field,
+.vui-action-wrap .vui-action-cancel {
+  padding: 15px 10px;
+  background-color: #fff;
+  text-align: center;
+  font-size: 16px;
+}
+.vui-action-wrap .vui-action-field .is-action--subtext {
+  font-size: 12px;
+  color: @color-gray;
+}
+
+.vui-action-wrap .vui-action-cancel {
+  margin-top: 16px;
+  color: @color-light;
+  font-weight: 800;
+}
