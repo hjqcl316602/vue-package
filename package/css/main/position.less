@@ -1,22 +1,6 @@
 @import "./theme.less";
 // center
 
-.vi-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.vi-center--hor {
-  display: flex;
-  justify-content: center;
-}
-
-.vi-center--ver {
-  display: flex;
-  align-items: center;
-}
-
 // cover
 
 .vi-cover {
@@ -24,38 +8,60 @@
   height: 100%;
 }
 
-.vi-cover--ver {
+.vi-cover.is-cover--ver {
   height: 100%;
+  width: auto;
 }
 
-.vi-cover--hor {
+.vi-cover.is-cover--hor {
   width: 100%;
+  height: auto;
 }
 
 // 填充
 
-.vi-cotian {
+.vi-cotain {
   width: 100vw;
   height: 100vh;
 }
 
-.vi-cotian--ver {
+.vi-cotain.is-cotain--ver {
   height: 100vh;
+  width: auto;
 }
 
-.vi-cotian--hor {
+.vi-cotain.is-contain--hor {
   width: 100vw;
+  height: auto;
 }
 
+// 标记
 // 必填项
-.vi-require {
-  padding-left: 10px;
+.vi-tag {
+  position: relative;
 }
-.vi-require:before {
+.vi-tag.is-tag--require {
+  padding-left: @padding-medium;
+}
+.vi-tag.is-tag--require:before {
   content: "*";
   position: absolute;
-  left: 8px;
+  left: @padding-medium;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-100%, -50%);
+  color: @color-danger;
+}
+
+.vi-tag.is-tag--require.is-tag--right {
+  padding-right: @padding-medium;
+}
+
+.vi-tag.is-tag--require.is-tag--right:before {
+  content: "*";
+  position: absolute;
+  right: @padding-medium;
+  left: auto;
+  top: 50%;
+  transform: translate(100%, -50%);
   color: @color-danger;
 }

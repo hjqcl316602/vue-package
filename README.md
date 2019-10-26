@@ -1,3 +1,3 @@
-# store-vue-store
+# vue-package
 
-git clone https://github.com/hjqcl316602/store-vue-store.git
+git clone https://github.com/hjqcl316602/vue-package.git

@@ -1,11 +1,12 @@
 {
-  "name": "store-basis",
+  "name": "vue-package",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "hjqcl316602 <415877608@qq.com>",
   "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev:package": "webpack-dev-server --inline --progress --config build-package/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
     "build:style": "gulp --gulpfile build/build-style.js",
