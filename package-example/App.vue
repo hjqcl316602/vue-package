@@ -1,0 +1,24 @@
+<script>
+import elementResizeDetectorMaker from "element-resize-detector";
+const instance = {};
+instance.name = "";
+instance.props = {};
+instance.data = function() {
+  return {};
+};
+instance.methods = {};
+instance.created = function() {};
+instance.mounted = function() {};
+export default instance;
+</script>
+
+<template>
+  <div class="">
+    <div class="vi-background is-background--parimary">
+      颠三倒四
+    </div>
+    <router-view />
+  </div>
+</template>
+
+<style scoped></style>
