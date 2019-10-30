@@ -83,7 +83,7 @@ let clearStore = function() {
   }
 };
 
-export { setStore, getStore, removeStore, clearStore };
+export default { setStore, getStore, removeStore, clearStore };
 
 /*
  * @Descripttion: 本地存储

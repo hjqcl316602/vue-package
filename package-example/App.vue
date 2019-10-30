@@ -14,9 +14,6 @@ export default instance;
 
 <template>
   <div class="">
-    <div class="vi-background is-background--parimary">
-      颠三倒四
-    </div>
     <router-view />
   </div>
 </template>

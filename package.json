@@ -7,8 +7,13 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "dev:package": "webpack-dev-server --inline --progress --config build-package/webpack.dev.conf.js",
+    "dev:exchange": "webpack-dev-server --inline --progress --config build-exchange-mobile/webpack.dev.conf.js",
     "start": "npm run dev",
+    "package": "npm run dev:package",
+    "exchange": "npm run dev:exchange",
     "build": "node build/build.js",
+    "build:package": "node build-package/build.js",
+    "build:exchange": "node build-exchange-mobile/build.js",
     "build:style": "gulp --gulpfile build/build-style.js",
     "build:ui": "webpack --config build/webpack.dist.ui.config.js",
     "build:es": "webpack --config build/webpack.dist.es.config.js"

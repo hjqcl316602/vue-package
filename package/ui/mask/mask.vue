@@ -28,9 +28,9 @@ instance.data = function() {
 instance.methods = {
   transition() {
     if (this.value && !this.scrollable) {
-      document.body.classList["add"]("vui-locked");
+      document.body.classList["add"]("vi-locked");
     } else {
-      document.body.classList["remove"]("vui-locked");
+      document.body.classList["remove"]("vi-locked");
     }
   },
   handler() {

@@ -84,23 +84,21 @@ export default {
 
 <template>
   <div>
-    <vui-mask v-model="currentValue" transitionName="fade" v-if="mask">
-    </vui-mask>
-    <div :class="styles.className" @click.self="handler">
-      <div class="vui-action">
-        <div
-          class="vui-action-field vi-border is-border--top is-border--thiner"
-          v-for="(item, index) in options"
-          @click="select(item)"
+    <vui-mask v-model="currentValue" v-if="mask"> </vui-mask>
+    <div :class="styles.className">
+      <div
+        class="  vi-border is-border--top is-border--thiner vi-text is-height--larger is-align--center"
+        style=""
+        v-for="(item, index) in options"
+        @click="select(item)"
+      >
+        <span>{{ item["text"] }}</span>
+        <span
+          v-if="item['subText']"
+          class="vi-text is-size--smaller is-color--light"
         >
-          <span>{{ item["text"] }}</span>
-          <span v-if="item['subText']" class="is-action--subtext">
-            {{ item["subText"] }}
-          </span>
-        </div>
-        <div class="vui-action-cancel" @click="close" v-if="isCancel">
-          <span>取消</span>
-        </div>
+          {{ item["subText"] }}
+        </span>
       </div>
     </div>
   </div>

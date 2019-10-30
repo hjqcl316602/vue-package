@@ -7,6 +7,7 @@
  */
 import Accordion from "./accordion/index.js";
 import Action from "./action/index.js";
+import ActionSheet from "./action-sheet/index.js";
 import Border from "./border/index.js";
 import Button from "./button/index.js";
 import Carousel from "./carousel/index.js";
@@ -49,6 +50,7 @@ const TabGroup = Tab.Group;
 export {
   Accordion,
   Action,
+  ActionSheet,
   Border,
   Button,
   Carousel,

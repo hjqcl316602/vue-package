@@ -5,8 +5,18 @@
  * @LastEditTime: 2019-09-09 17:37:05
  * @LastEditors: Please set LastEditors
  */
+/***************************** css ********************************/
+const text = r =>
+  require.ensure([], () => r(require("../view/text.vue")), "text");
+/***************************** ui ********************************/
 const action = r =>
   require.ensure([], () => r(require("../view/action.vue")), "action");
+const actionSheet = r =>
+  require.ensure(
+    [],
+    () => r(require("../view/action-sheet.vue")),
+    "action-sheet"
+  );
 const index = r =>
   require.ensure([], () => r(require("../view/index.vue")), "index");
 const border = r =>
@@ -56,6 +66,12 @@ const routes = [
   { path: "*", redirect: "/index", meta: { hide: true } },
   { path: "/", redirect: "/index", meta: { hide: true } },
   {
+    path: "/text",
+    name: "text",
+    component: text,
+    meta: { hide: true, title: "文本" }
+  },
+  {
     path: "/index",
     name: "index",
     component: index,
@@ -66,6 +82,12 @@ const routes = [
     name: "action",
     component: action,
     meta: { title: "上拉菜单", en: "action" }
+  },
+  {
+    path: "/action-sheet",
+    name: "action-sheet",
+    component: actionSheet,
+    meta: { title: "行为选择", en: "action-sheet" }
   },
   {
     path: "/border",

@@ -40,7 +40,7 @@ instance.computed = {
   confirmClassName() {
     let className = ["vui-confirm"];
     if (this.value) {
-      className.push("vui-confirm--active");
+      className.push("is-confirm--show");
     }
     return className;
   }
@@ -64,26 +64,27 @@ export default instance;
   <div>
     <vui-mask v-if="maskShow" v-model="currentValue"></vui-mask>
     <div :class="confirmClassName">
-      <div class="vui-confirm__header">
-        <slot name="header">
-          <div class="vui-confirm__header--message">
+      <slot name="header">
+        <div
+          class="vi-text is-align--center vi-border is-border--bottom is-border--thiner"
+          style="line-height: 44px"
+        >
+          <span class="vi-text is-color--primary ">
             {{ title }}
+          </span>
+        </div>
+      </slot>
+      <slot> </slot>
+      <slot name="footer">
+        <div
+          class="vi-text is-align--right vi-border is-border--top is-border--thiner"
+        >
+          <div class="vi-btn is-btn--larger" @click="cancelHandler">取消</div>
+          <div class="vi-btn is-btn--larger is-btn--primary" @click="okHandler">
+            确认
           </div>
-        </slot>
-      </div>
-      <div class="vui-confirm__content">
-        <slot></slot>
-      </div>
-      <div class="vui-confirm__footer">
-        <slot name="footer">
-          <div class="vui-confirm__footer-btn">
-            <div class="vi-btn" @click="cancelHandler">取消</div>
-            <div class="vi-btn is-btn--primary" @click="okHandler">
-              确认
-            </div>
-          </div>
-        </slot>
-      </div>
+        </div>
+      </slot>
     </div>
   </div>
 </template>
