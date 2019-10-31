@@ -87,7 +87,8 @@ export default {
     <vui-mask v-model="currentValue" v-if="mask"> </vui-mask>
     <div :class="styles.className">
       <div
-        class="  vi-border is-border--top is-border--thiner vi-text is-height--larger is-align--center"
+        class="   is-border--top is-border--thiner vi-text is-height--larger is-align--center"
+        :class="{ 'vi-border': index !== 0 }"
         style=""
         v-for="(item, index) in options"
         @click="select(item)"
