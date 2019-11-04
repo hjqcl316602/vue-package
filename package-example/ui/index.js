@@ -6,7 +6,7 @@
  * @LastEditors: Please set LastEditors
  */
 import Vue from "vue";
-import * as UI from "../../package/ui/index";
+import * as UI from "@package/ui/index";
 
 let uiKeys = Object.keys(UI);
 uiKeys.forEach(ele => {

@@ -1,6 +1,6 @@
 <script>
 import routes from "../router/routes";
-console.log(routes);
+//console.log(routes);
 const instance = {};
 instance.name = "";
 instance.props = {};

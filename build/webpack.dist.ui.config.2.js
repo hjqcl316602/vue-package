@@ -5,30 +5,30 @@
  * @LastEditTime: 2019-08-20 16:18:11
  * @LastEditors: Please set LastEditors
  */
-var path = require('path');
-var webpack = require('webpack');
-const merge = require('webpack-merge');
-const webpackBaseConfig = require('./webpack.base.conf.js');
+var path = require("path");
+var webpack = require("webpack");
+const merge = require("webpack-merge");
+const webpackBaseConfig = require("./webpack.base.conf.js");
 
 module.exports = merge(webpackBaseConfig, {
   //devtool: 'source-map',
   entry: {
-    main: './package/ui/index.js'
+    main: "./package/ui/d3.js"
   },
   output: {
-    path: path.resolve(__dirname, '../package/ui'),
-    publicPath: '/dist/',
-    filename: 'index.min.js',
-    library: 'index',
-    libraryTarget: 'umd',
+    path: path.resolve(__dirname, "../package/ui"),
+    publicPath: "/dist/",
+    filename: "index.min.js",
+    library: "index",
+    libraryTarget: "umd",
     umdNamedDefine: true
   },
   externals: {
     vue: {
-      root: 'Vue',
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue'
+      root: "Vue",
+      commonjs: "vue",
+      commonjs2: "vue",
+      amd: "vue"
     }
   }
   // plugins: [
@@ -52,7 +52,7 @@ module.exports = merge(webpackBaseConfig, {
 
 module.exports.plugins = (module.exports.plugins || []).concat([
   new webpack.DefinePlugin({
-    'process.env': {
+    "process.env": {
       NODE_ENV: '"production"'
     }
   }),
@@ -68,7 +68,7 @@ module.exports.plugins = (module.exports.plugins || []).concat([
 ]);
 
 // module.exports = {
-//   entry: './package/ui/index.js',
+//   entry: './package/ui/d3.js',
 //   output: {
 //     path: path.resolve(__dirname, '../package/ui'),
 //     //publicPath: '/dist/',
