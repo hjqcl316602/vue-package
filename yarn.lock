@@ -7098,6 +7098,11 @@ vue-loader@^13.3.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
+vue-qriously@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npm.taobao.org/vue-qriously/download/vue-qriously-1.1.1.tgz#b3a84b05280cb1edfd153bbc003f031995ea7ce7"
+  integrity sha1-s6hLBSgMse39FTu8AD8DGZXqfOc=
+
 vue-router@^3.0.1:
   version "3.0.7"
   resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.0.7.tgz?cache=0&sync_timestamp=1562164331961&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-router%2Fdownload%2Fvue-router-3.0.7.tgz#b36ca107b4acb8ff5bc4ff824584059c23fcb87b"

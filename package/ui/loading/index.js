@@ -5,15 +5,15 @@
  * @LastEditTime: 2019-08-27 11:13:18
  * @LastEditors: Please set LastEditors
  */
-import Vue from 'vue';
-import Loading from './loading.vue';
-import LoadingCircle from './loading-circle.vue';
-import LoadingCross from './loading-cross.vue';
-import LoadingRect from './loading-rect.vue';
-import LoadingRing from './loading-ring.vue';
-import LoadingRound from './loading-round.vue';
-import LoadingTurn from './loading-turn.vue';
-import LoadingWave from './loading-wave.vue';
+import Vue from "vue";
+import Loading from "./loading.vue";
+import LoadingCircle from "./loading-circle.vue";
+import LoadingCross from "./loading-cross.vue";
+import LoadingRect from "./loading-rect.vue";
+import LoadingRing from "./loading-ring.vue";
+import LoadingRound from "./loading-round.vue";
+import LoadingTurn from "./loading-turn.vue";
+import LoadingWave from "./loading-wave.vue";
 LoadingCircle.install = function(Vue, options) {
   Vue.component(LoadingCircle.name, LoadingCircle);
 };
@@ -54,8 +54,9 @@ let LoadingInstance = function() {
       }, 20);
     },
     clear() {
+      if (!component) return;
       component.changeVisible((status = false));
-      elem.addEventListener('transitionend', function(e) {
+      elem.addEventListener("transitionend", function(e) {
         document.body.removeChild(elem);
         elem = null;
         component = null;
