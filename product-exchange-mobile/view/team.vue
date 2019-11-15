@@ -80,7 +80,7 @@ export default {
           class="vi-flex is-justify-content--space-between vi-text is-height--larger"
         >
           <span class="vi-text is-color--light">我的余额</span>
-          <span> {{ message.myPlatCoin || 0 | toShousand }} </span>
+          <span> {{ message.myPlatCoin || 0 }} </span>
         </div>
       </div>
       <div class="vi-border is-border--bottom is-border--thiner vi-padding-ad">
@@ -88,7 +88,7 @@ export default {
           class="vi-flex is-justify-content--space-between vi-text is-height--larger"
         >
           <span class="vi-text is-color--light">团队余额</span>
-          <span> {{ message.totalPlatCoin || 0 | toShousand }} </span>
+          <span> {{ message.totalPlatCoin || 0 }} </span>
         </div>
       </div>
       <div class="vi-border is-border--bottom is-border--thiner vi-padding-ad">

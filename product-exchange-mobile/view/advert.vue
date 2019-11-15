@@ -207,14 +207,24 @@ export default {
             class="vi-flex is-justify-content--space-between  vi-padding-ad vi-border is-border--bottom is-border--thiner"
             style="line-height: 36px"
           >
-            <span class="vi-text is-color--light">剩余数量</span>
+            <span class="vi-text is-color--light">剩余数量 | TTM</span>
             <span>
               <span class="vi-text is-color--primary">
-                {{ item.remainAmount | toShousand }}
+                {{ item.remainAmount }}
               </span>
-              <span>TTM</span>
             </span>
           </div>
+
+          <div
+            class="vi-flex is-justify-content--space-between  vi-padding-ad vi-border is-border--bottom is-border--thiner"
+            style="line-height: 36px"
+          >
+            <span class="vi-text is-color--light">数量 | TTM </span>
+            <span>
+              <span> {{ item.number }} </span>
+            </span>
+          </div>
+
           <div
             class="vi-flex is-justify-content--space-between  vi-padding-ad vi-border is-border--bottom is-border--thiner"
             style="line-height: 36px"
@@ -230,35 +240,20 @@ export default {
               {{ $getTransactionTypes(item.advertiseType).text }}
             </span>
           </div>
+
           <div
             class="vi-flex is-justify-content--space-between  vi-padding-ad vi-border is-border--bottom is-border--thiner"
             style="line-height: 36px"
           >
-            <span class="vi-text is-color--light">数量</span>
-            <span>
-              <span> {{ item.number | toShousand }} </span>
-              <span>
-                TTM
-              </span>
-            </span>
+            <span class="vi-text is-color--light">单价 | CNY</span>
+            <span> {{ item.price }} </span>
           </div>
           <div
             class="vi-flex is-justify-content--space-between  vi-padding-ad vi-border is-border--bottom is-border--thiner"
             style="line-height: 36px"
           >
-            <span class="vi-text is-color--light">单价</span>
-            <span> {{ item.price }}CNY </span>
-          </div>
-          <div
-            class="vi-flex is-justify-content--space-between  vi-padding-ad vi-border is-border--bottom is-border--thiner"
-            style="line-height: 36px"
-          >
-            <span class="vi-text is-color--light">限额</span>
-            <span>
-              {{ item.minLimit | toShousand }}~{{
-                item.maxLimit | toShousand
-              }}CNY
-            </span>
+            <span class="vi-text is-color--light">限额 | CNY</span>
+            <span> {{ item.minLimit }}~{{ item.maxLimit }} </span>
           </div>
           <div
             class="vi-flex is-justify-content--space-between  vi-padding-ad vi-border is-border--bottom is-border--thiner"

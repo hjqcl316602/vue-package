@@ -113,12 +113,11 @@ export default {
             class="vi-flex is-justify-content--space-between  vi-border is-border--bottom is-border--thiner vi-padding-ad"
             style="line-height: 36px"
           >
-            <span class="vi-text is-color--light">剩余数量</span>
+            <span class="vi-text is-color--light">剩余数量 | TTM </span>
             <span>
               <span class="vi-text is-color--primary">
-                {{ item.remainAmount | toShousand }}
+                {{ item.remainAmount | toCeil }}
               </span>
-              <span>TTM</span>
             </span>
           </div>
 
@@ -126,21 +125,21 @@ export default {
             class="vi-flex is-justify-content--space-between  vi-border is-border--bottom is-border--thiner vi-padding-ad"
             style="line-height: 36px"
           >
-            <span class="vi-text is-color--light">单价</span>
-            <span>{{ item.price }}CNY</span>
+            <span class="vi-text is-color--light">单价 | CNY</span>
+            <span>{{ item.price }}</span>
           </div>
 
           <div
             class="vi-flex is-justify-content--space-between  vi-border is-border--bottom is-border--thiner vi-padding-ad"
             style="line-height: 36px"
           >
-            <span class="vi-text is-color--light">限额</span>
+            <span class="vi-text is-color--light">限额 | CNY</span>
             <span>
               <span>
-                {{ item.minLimit | toShousand }}
+                {{ item.minLimit | toCeil }}
               </span>
               ~
-              <span> {{ item["maxLimit"] | toShousand }}CNY </span>
+              <span> {{ item["maxLimit"] | toCeil }} </span>
             </span>
           </div>
           <div
@@ -157,7 +156,7 @@ export default {
             class="vi-flex is-justify-content--space-between  vi-border is-border--bottom is-border--thiner vi-padding-ad"
             style="line-height: 36px"
           >
-            <span class="vi-text is-color--light">成交量</span>
+            <span class="vi-text is-color--light">成交量 | 笔</span>
             <span>
               {{ item.transactions }}
             </span>

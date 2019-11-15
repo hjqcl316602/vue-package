@@ -98,9 +98,19 @@ export default {
             ></span>
             <span>
               <span class="vi-text is-color--primary">
-                {{ item.money | toShousand }}
+                {{ item.money }}
               </span>
-              <span>CNY</span>
+            </span>
+          </div>
+          <div
+            class="vi-flex is-justify-content--space-between is-align-items--center vi-padding-ad vi-border is-border--bottom is-border--thiner"
+            style="line-height: 36px"
+          >
+            <span class="vi-text is-color--light">数量 | {{ item.unit }}</span>
+            <span>
+              <span class="vi-text is-color--warning">
+                {{ item.amount }}
+              </span>
             </span>
           </div>
 
@@ -111,28 +121,6 @@ export default {
             <span class="vi-text is-color--light">订单号</span>
             <span class="">
               {{ item.orderSn }}
-            </span>
-          </div>
-          <div
-            class="vi-flex is-justify-content--space-between is-align-items--center vi-padding-ad vi-border is-border--bottom is-border--thiner"
-            style="line-height: 36px"
-          >
-            <span class="vi-text is-color--light">币种</span>
-            <span class="">
-              {{ item.unit }}
-            </span>
-          </div>
-
-          <div
-            class="vi-flex is-justify-content--space-between is-align-items--center vi-padding-ad vi-border is-border--bottom is-border--thiner"
-            style="line-height: 36px"
-          >
-            <span class="vi-text is-color--light">数量</span>
-            <span>
-              <span class="vi-text is-color--warning">
-                {{ item.amount | toShousand }}
-              </span>
-              <span> {{ item.unit }}</span>
             </span>
           </div>
 

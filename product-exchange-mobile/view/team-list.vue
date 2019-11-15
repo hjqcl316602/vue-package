@@ -54,28 +54,28 @@ export default {
             style="line-height: 36px"
           >
             <span class="vi-text is-color--light">余额</span>
-            <span>{{ item.myPlatCoin || 0 | toShousand }}</span>
+            <span>{{ item.myPlatCoin || 0 }}</span>
           </div>
           <div
             class="vi-flex is-justify-content--space-between vi-border is-border--thiner is-border--bottom vi-padding-ad"
             style="line-height: 36px"
           >
             <span class="vi-text is-color--light">团队余额</span>
-            <span>{{ item.myTeamPlatCoin || 0 | toShousand }}</span>
+            <span>{{ item.myTeamPlatCoin || 0 }}</span>
           </div>
           <div
             class="vi-flex is-justify-content--space-between vi-border is-border--thiner is-border--bottom vi-padding-ad"
             style="line-height: 36px"
           >
             <span class="vi-text is-color--light">今日收款</span>
-            <span>{{ item.totayAmount || 0 | toShousand }}</span>
+            <span>{{ item.totayAmount || 0 }}</span>
           </div>
           <div
             class="vi-flex is-justify-content--space-between vi-border is-border--thiner is-border--bottom vi-padding-ad"
             style="line-height: 36px"
           >
             <span class="vi-text is-color--light">全部收款</span>
-            <span>{{ item.totalAmount || 0 | toShousand }}</span>
+            <span>{{ item.totalAmount || 0 }}</span>
           </div>
           <div
             class="vi-flex is-justify-content--space-between vi-border is-border--thiner is-border--bottom vi-padding-ad"

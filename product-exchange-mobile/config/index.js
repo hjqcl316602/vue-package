@@ -1,6 +1,6 @@
 let config = {};
 config.devTag = ["localhost", "192.168", "fill", "trade.bstchain"];
-config.is = "test1";
+config.is = "test";
 config.devHttp =
   config.is === "test" ? "http://trade.bstchain.com" : "http://dingyi888.com";
 config.proHttp = window.location.origin;

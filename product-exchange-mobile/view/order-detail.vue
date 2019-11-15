@@ -342,7 +342,7 @@ export default {
             setTimeout(() => {
               this.$router.go(-1);
             }, 1000);
-            this.confirm.appeal.show = false;
+            this.confirm.pay.show = false;
             this.$message.success(data.message);
           } else {
             this.$message.danger(data.message);

@@ -65,7 +65,6 @@ export default {
             <span class="vi-text is-color--primary">
               {{ item.money }}
             </span>
-            <span>CNY</span>
           </span>
         </div>
 

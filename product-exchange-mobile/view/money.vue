@@ -280,7 +280,7 @@ export default {
         </div>
         <div class=" ">
           <span class="vi-text is-color--warning">
-            {{ item.balance | toShousand }}
+            {{ item.balance }}
           </span>
         </div>
       </div>
@@ -295,7 +295,7 @@ export default {
         </div>
         <div class=" ">
           <span class="vi-text is-color--danger">
-            {{ item.frozenBalance | toShousand }}
+            {{ item.frozenBalance }}
           </span>
         </div>
       </div>

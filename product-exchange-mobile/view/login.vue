@@ -2,6 +2,7 @@
 import { loginIn, loginCheck, getCaptcha } from "@/request/login";
 import { mapState, mapMutations } from "vuex";
 import { orderTradding } from "@/assets";
+import "@/assets/gt";
 
 export default {
   name: "vv-login",

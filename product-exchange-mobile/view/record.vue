@@ -152,7 +152,7 @@ export default {
             >
               <div>
                 <span class="vi-text is-color--light">
-                  数量
+                  数量 | {{ item["symbol"] }}
                 </span>
               </div>
               <div class="">
@@ -160,10 +160,7 @@ export default {
                   class="vi-text "
                   :class="getRecordType(item.type).className"
                 >
-                  {{ item.amount | toShousand }}
-                </span>
-                <span>
-                  {{ item["symbol"] }}
+                  {{ item.amount }}
                 </span>
               </div>
             </div>
