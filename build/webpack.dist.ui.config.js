@@ -10,7 +10,7 @@ const path = require("path");
 const webpack = require("webpack");
 const vueLoaderConfig = require("./vue-loader.conf");
 module.exports = {
-  entry: path.resolve(__dirname, "../package/ui/d3.js"), //'./package/es/d3.js',
+  entry: path.resolve(__dirname, "../package/ui/d6.js"), //'./package/es/d6.js',
   output: {
     path: path.resolve(__dirname, "../package/ui"),
     publicPath: "/dist/",

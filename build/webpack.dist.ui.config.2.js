@@ -13,7 +13,7 @@ const webpackBaseConfig = require("./webpack.base.conf.js");
 module.exports = merge(webpackBaseConfig, {
   //devtool: 'source-map',
   entry: {
-    main: "./package/ui/d3.js"
+    main: "./package/ui/d6.js"
   },
   output: {
     path: path.resolve(__dirname, "../package/ui"),
@@ -68,7 +68,7 @@ module.exports.plugins = (module.exports.plugins || []).concat([
 ]);
 
 // module.exports = {
-//   entry: './package/ui/d3.js',
+//   entry: './package/ui/d6.js',
 //   output: {
 //     path: path.resolve(__dirname, '../package/ui'),
 //     //publicPath: '/dist/',

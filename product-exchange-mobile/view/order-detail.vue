@@ -39,7 +39,9 @@ export default {
         },
         release: {
           show: false,
-          password: ""
+          password: "",
+          backtime: 0,
+          timer: null
         },
         appeal: {
           show: false
@@ -267,7 +269,7 @@ export default {
         }
       } else {
         if (text === "确认放行") {
-          this.confirm.release.show = true;
+          this.beforeRelease();
         } else if (text === "确认付款") {
           this.confirm.pay.show = true;
         } else if (text === "关闭") {
@@ -349,6 +351,27 @@ export default {
           }
         });
       }
+    },
+    /**
+     * 确认放行前
+     */
+    beforeRelease() {
+      this.confirm.release.show = true;
+      this.confirm.release.backtime = 15;
+      this.setReleaseTimer();
+    },
+    setReleaseTimer() {
+      this.clearReleaseTimer();
+      this.confirm.release.timer = setInterval(() => {
+        this.confirm.release.backtime--;
+        if (this.confirm.release.backtime === 0) {
+          this.clearReleaseTimer();
+        }
+      }, 1000);
+    },
+    clearReleaseTimer() {
+      clearInterval(this.confirm.release.timer);
+      this.confirm.release.timer = null;
     }
   },
   mounted() {
@@ -366,10 +389,33 @@ export default {
     <template>
       <vui-confirm v-model="confirm.release.show" title="确认放行">
         <div>
-          <div class="vi-text is-align--center" style="line-height: 44px">
-            <span class="vi-text is-color--danger"
-              >请谨慎放行，错放不可追回</span
+          <div class="vi-padding">
+            <p
+              class="vi-text is-color--danger"
+              style="text-indent: 20px;line-height: 32px"
             >
+              一、最近骗子猖獗，请再次核对金额，金额正确才放行，没有收到款或者收到金额不符款项，请务放行，
+              有任何问题请及时联系客服处理
+            </p>
+            <p
+              class="vi-text is-color--danger"
+              style="text-indent: 40px;line-height: 28px"
+            >
+              例如：付款方会更改自己的昵称，**通过扫码向你付款5000.00元，来迷惑收款方，其实付款方只付款了0.1元，
+              已经有多名币商被骗，请一定要谨慎操作
+            </p>
+            <p
+              class="vi-text is-color--danger"
+              style="text-indent: 20px;line-height: 32px"
+            >
+              二、自己不认真核对金额造成损失的，损失由自己承担
+            </p>
+            <p
+              class="vi-text is-color--danger"
+              style="text-indent: 20px;line-height: 32px"
+            >
+              三、请谨慎放行，确认收到款项再放行，确认收到款项再放行，确认收到款项再放行
+            </p>
           </div>
           <div class="vi-flex vi-padding-ad " style="line-height: 44px">
             <div
@@ -399,7 +445,14 @@ export default {
         >
           <div
             class="vi-btn is-btn--primary is-btn--hollow is-btn--small is-btn--radius is-btn--thiner"
+            v-if="confirm.release.backtime"
+          >
+            {{ confirm.release.backtime }}秒后操作
+          </div>
+          <div
+            class="vi-btn is-btn--primary is-btn--hollow is-btn--small is-btn--radius is-btn--thiner"
             @click="confirmOk('release')"
+            v-else
           >
             确认放行
           </div>

@@ -9,7 +9,7 @@
 const path = require("path");
 const webpack = require("webpack");
 module.exports = {
-  entry: path.resolve(__dirname, "../package/es/d3.js"), //'./package/es/d3.js',
+  entry: path.resolve(__dirname, "../package/es/d6.js"), //'./package/es/d6.js',
   output: {
     path: path.resolve(__dirname, "../package/es"),
     publicPath: "/dist/",
