@@ -121,6 +121,18 @@ D6.prototype.clearAlong = function() {
   });
   return this;
 };
+/**
+ * @name 清除半顺
+ */
+D6.prototype.clearHalfAlong = function() {
+  let alongs = ["01", "12", "23", "34", "45", "56", "67", "78", "89"];
+  alongs.forEach(along => {
+    this.result = clear(this.result, ele => {
+      return ele.indexOf(along) > -1;
+    });
+  });
+  return this;
+};
 
 /**
  * @name 清除全部是奇数组合
@@ -224,6 +236,8 @@ D6.prototype.clearCompose = function() {
   return this;
 };
 let prize = [
+  "248",
+  "567",
   "134",
   "267",
   "036",
@@ -236,6 +250,8 @@ let prize = [
   "369"
 ];
 let test = [
+  "095",
+  "479",
   "068",
   "135",
   "124",
@@ -249,8 +265,9 @@ let test = [
 ];
 let d6 = new D6();
 
-d6.clearSumEndBig()
-  .clearCompose(...prize, ...test)
-  .clearDoubleNumberCompose("134");
+d6.clearDoubleNumberCompose("248", "059", "567")
+  .clearEven()
+  .clearSum(14)
+  .clearAlong();
 let compose6 = d6.result;
 console.log(compose6.length, compose6.join("  "));
