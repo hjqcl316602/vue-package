@@ -235,7 +235,18 @@ D6.prototype.clearCompose = function() {
   });
   return this;
 };
+
+D6.prototype.clearNumber = function() {
+  let args = [...arguments];
+  args.forEach(arg => {
+    this.result = clear(this.result, ele => {
+      return ele.indexOf(arg) > -1;
+    });
+  });
+  return this;
+};
 let prize = [
+  "013",
   "248",
   "567",
   "134",
@@ -250,6 +261,7 @@ let prize = [
   "369"
 ];
 let test = [
+  "134",
   "095",
   "479",
   "068",
@@ -265,9 +277,6 @@ let test = [
 ];
 let d6 = new D6();
 
-d6.clearDoubleNumberCompose("248", "059", "567")
-  .clearEven()
-  .clearSum(14)
-  .clearAlong();
+d6.clearNumber(3, 4).clearAlong();
 let compose6 = d6.result;
 console.log(compose6.length, compose6.join("  "));

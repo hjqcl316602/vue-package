@@ -357,7 +357,7 @@ export default {
      */
     beforeRelease() {
       this.confirm.release.show = true;
-      this.confirm.release.backtime = 15;
+      this.confirm.release.backtime = 5;
       this.setReleaseTimer();
     },
     setReleaseTimer() {
@@ -372,6 +372,11 @@ export default {
     clearReleaseTimer() {
       clearInterval(this.confirm.release.timer);
       this.confirm.release.timer = null;
+    }
+  },
+  watch: {
+    ["confirm.release.show"]() {
+      this.confirm.release.password = "";
     }
   },
   mounted() {
