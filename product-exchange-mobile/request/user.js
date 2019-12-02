@@ -43,3 +43,12 @@ export let bindAgency = params =>
  */
 export let updateAgencyPercent = params =>
   axios.post(config.http + "/uc/agency/updateAgencyPercent", params);
+
+/**
+ * 时间：2019/9/22 ,
+ * 描述：抢单
+ * params :{
+ * }
+ */
+export let setOnline = params =>
+  axios.post(config.http + "/uc/member/online", params);

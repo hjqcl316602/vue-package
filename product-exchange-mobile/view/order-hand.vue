@@ -8,6 +8,11 @@ export default {
     return {
       params: {
         list: []
+      },
+      content: {
+        scanOrders: [],
+        payModeData: [],
+        sort: []
       }
     };
   },
@@ -20,7 +25,25 @@ export default {
     getPayConfirmOrder() {
       getPayConfirmOrder().then(({ data }) => {
         if (data.code === 0) {
-          this.params.list = data["data"];
+          let { scanOrders, payModeData, sort, appealOrders } = data.data;
+          // let newOrders = [];
+          // scanOrders.forEach(ele => {
+          //   newOrders.push(Object.assign(ele, { orderType: "sellBuy" }));
+          // });
+          // appealOrders.forEach(ele => {
+          //   newOrders.push(Object.assign(ele, { orderType: "customer" }));
+          // });
+          this.content.scanOrders = scanOrders;
+          this.content.sort = sort;
+          let newPayModeData = [];
+          let keys = Object.keys(payModeData);
+          keys.forEach(key => {
+            newPayModeData.push({
+              text: key,
+              value: payModeData[key]
+            });
+          });
+          this.content.payModeData = newPayModeData;
         } else this.$message.danger(data.message);
       });
     },
@@ -42,10 +65,10 @@ export default {
 
 <template>
   <div class="">
-    <div v-if="params.list.length > 0" ref="wrap">
+    <div v-if="content.scanOrders.length > 0" ref="wrap">
       <div
         class="vi-background vi-margin-bottom"
-        v-for="(item, index) in params.list"
+        v-for="(item, index) in content.scanOrders"
         :key="index"
         @click="selectOrder(item)"
       >

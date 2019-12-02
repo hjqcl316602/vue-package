@@ -16,7 +16,8 @@ import {
   scenic9,
   scenic10
 } from "@/image";
-import { getTraddingOrder } from "@/request/order";
+import { setOnline } from "@/request/user";
+import { getTraddingOrder, getPayConfirmOrder } from "@/request/order";
 let headImages = [
   scenic1,
   scenic2,
@@ -39,6 +40,17 @@ export default {
       withdraw: {
         today: 0,
         total: 0
+      },
+      content: {
+        payModeData: [],
+        sort: []
+      },
+      pay: {
+        timer: null
+      },
+      online: {
+        timer: null,
+        backtime: 0
       }
     };
   },
@@ -58,6 +70,7 @@ export default {
     }),
     init() {
       this.getTraddingOrder();
+      this.setPayTimer();
       //this.getWithdraw();
       //this.getWithdraw("today");
       this.setPageCache("user");
@@ -105,6 +118,100 @@ export default {
           this.$message.danger(data["message"]);
         }
       });
+    },
+    /**
+     * 获取订单的排序
+     */
+    getPayConfirmOrder() {
+      getPayConfirmOrder().then(({ data }) => {
+        if (data.code === 0) {
+          let { payModeData, sort } = data.data;
+
+          this.content.sort = sort;
+          let newPayModeData = [];
+          let keys = Object.keys(payModeData);
+          keys.forEach(key => {
+            newPayModeData.push({
+              text: key,
+              value: payModeData[key]
+            });
+          });
+          this.content.payModeData = newPayModeData;
+        } else this.$message.danger(data.message);
+      });
+    },
+
+    setPayTimer() {
+      this.clearPayTimer();
+      this.getPayConfirmOrder();
+      this.pay.timer = setInterval(() => {
+        this.getPayConfirmOrder();
+      }, 10 * 1000);
+    },
+    clearPayTimer() {
+      clearInterval(this.pay.timer);
+      this.pay.timer = null;
+    },
+    /**
+     * 抢单
+     */
+    setOnline() {
+      setOnline().then(({ data }) => {
+        let { code, message } = data;
+        if (code === 0) {
+          this.setOnlineTimer();
+          this.setPayTimer();
+        } else this.$message.danger(message);
+      });
+    },
+    setOnlineTimer() {
+      this.clearOnlineTimer();
+      this.online.backtime = 5 * 60 * 1000;
+      this.online.timer = setInterval(() => {
+        this.online.backtime -= 1000;
+        if (this.online.backtime === 0) {
+          this.clearOnlineTimer();
+        }
+      }, 1000);
+    },
+    clearOnlineTimer() {
+      clearInterval(this.online.timer);
+      this.online.timer = null;
+    },
+    /**
+     * 格式化时间
+     */
+    formatTime(times) {
+      let hour = 1000 * 60 * 60;
+
+      let minute = 1000 * 60;
+
+      let second = 1000;
+
+      let hours = Math.floor(times / hour);
+
+      let minutes = Math.floor((times - hours * hour) / minute);
+
+      let seconds = Math.floor(
+        (times - hours * hour - minutes * minute) / second
+      );
+
+      //console.log(hours, minutes, seconds);
+      function getZero(time) {
+        return Number(time) > 9 ? time : "0" + time;
+      }
+      if (hours > 0) {
+        return `${hours}时${getZero(minutes)}分${getZero(seconds)}秒`;
+      }
+
+      if (minutes > 0) {
+        return `${getZero(minutes)}分${getZero(seconds)}秒`;
+      }
+
+      if (seconds > 0) {
+        return `${getZero(seconds)}秒`;
+      }
+      return 0;
     }
   },
   mounted() {
@@ -147,6 +254,130 @@ export default {
             </div>
             <div>
               <span class="vi-icon vi-text is-color--white">&#xe61f;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vi-margin-bottom" v-if="content.payModeData.length > 0">
+        <div class="vi-background">
+          <div class="vi-border is-border--bottom is-border--thiner">
+            <div class="vi-padding-ad" style="line-height: 36px">
+              <span class="vi-text is-color--light">平台正在接单的数量</span>
+            </div>
+          </div>
+          <div class="vi-flex is-justify-content--space-around">
+            <div
+              v-for="(item, index) in content.payModeData"
+              :key="index"
+              style="line-height: 36px;min-width: 25%"
+            >
+              <div class="vi-padding vi-text is-align--center">
+                <span
+                  class="vi-icon vi-margin-right"
+                  :style="{ color: $getAdvertTypes(item.text, 'text').color }"
+                  style="font-size: 24px"
+                  v-html="$getAdvertTypes(item.text, 'text').icon"
+                ></span>
+                <span
+                  class="vi-text is-weight--bold is-color--warning"
+                  style="font-size: 22px"
+                >
+                  {{ item.value }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vi-margin-bottom" v-if="content.sort.length > 0">
+        <div class="vi-background">
+          <div class="vi-border is-border--bottom is-border--thiner">
+            <div class="vi-padding-ad" style="line-height: 36px">
+              <span class="vi-text is-color--light">我的广告</span>
+            </div>
+          </div>
+          <div class="vi-padding">
+            <div v-for="(item, index) in content.sort" :key="index">
+              <div class="vi-padding  ">
+                <div class="vi-flex">
+                  <div style="width: 50%">
+                    <div
+                      style="line-height: 32px"
+                      class="vi-text is-align--center"
+                    >
+                      <span
+                        class="vi-icon vi-margin-right"
+                        :style="{
+                          color: $getAdvertTypes(item.payMode, 'text').color
+                        }"
+                        style="font-size: 24px"
+                        v-html="$getAdvertTypes(item.payMode, 'text').icon"
+                      ></span>
+                    </div>
+                    <div
+                      style="line-height: 24px"
+                      class="vi-text is-align--center"
+                    >
+                      <span class="vi-text is-color--light">类型：</span>
+                      <span>
+                        {{ item.advertiseType === 1 ? "在线出售" : "在线够买" }}
+                      </span>
+                    </div>
+                    <div
+                      style="line-height: 24px"
+                      class="vi-text is-align--center"
+                    >
+                      <span class="vi-text is-color--light">
+                        剩余数量：
+                      </span>
+                      <span class="vi-text"> {{ item.remainAmount }} TTM </span>
+                    </div>
+                  </div>
+                  <div
+                    style="width: 50%"
+                    class="vi-flex is-flex-direction--column is-align-items--center is-justify-content--center"
+                  >
+                    <div class="vi-text is-align--center">
+                      <span class=" vi-text is-color--light">
+                        排队号：
+                      </span>
+                      <span
+                        class="vi-text is-color--danger"
+                        style="font-size: 24px"
+                      >
+                        {{ item.sortOrder }}
+                      </span>
+                    </div>
+                    <div class="vi-text is-align--center">
+                      <span class=" vi-text is-color--light">
+                        抢单号：
+                      </span>
+                      <span
+                        class="vi-text is-color--danger"
+                        style="font-size: 24px"
+                      >
+                        {{ item.pickOrder || "--" }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="vi-margin-top">
+              <div
+                class="vi-btn is-btn--hollow is-btn--radius is-btn--thiner is-btn--primary is-btn--smaller is-btn--long "
+                @click="setOnline"
+                v-if="online.backtime === 0"
+              >
+                抢单
+              </div>
+              <div
+                class="vi-btn is-btn--hollow is-btn--radius is-btn--thiner is-btn--primary is-btn--smaller is-btn--long is-btn--disabled"
+                v-else
+              >
+                {{ formatTime(online.backtime) }}后操作
+              </div>
             </div>
           </div>
         </div>
