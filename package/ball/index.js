@@ -1,15 +1,16 @@
 let sum = function(array = []) {
   let result = 0;
   array.forEach(item => {
-    result += item;
+    result += item.money;
   });
   return result;
 };
 
-let Ball = function(odds = 3, profit = 100, count = 5) {
+let Ball = function(odds = 3, profit = 100, count = 5, step = 0.5) {
   this.odds = odds;
   this.profit = profit;
   this.count = count;
+  this.step = step;
 };
 /**
  * 获取每次需要的金额
@@ -19,8 +20,13 @@ Ball.prototype.getItems = function() {
   let result = [];
   for (let n = 0; n < this.count; n++) {
     let resultTotal = sum(result);
-    let money = (this.profit + resultTotal) / (this.odds - 1);
-    result.push(money);
+    let money = Math.ceil(
+      (this.profit + resultTotal) / (this.odds + this.step * n - 1)
+    );
+    result.push({
+      money,
+      odds: this.odds + this.step * n
+    });
   }
   return result;
 };
@@ -32,8 +38,13 @@ Ball.prototype.getTotal = function() {
   let result = [];
   for (let n = 0; n < this.count; n++) {
     let resultTotal = sum(result);
-    let money = (this.profit + resultTotal) / (this.odds - 1);
-    result.push(money);
+    let money = Math.ceil(
+      (this.profit + resultTotal) / (this.odds + this.step * n - 1)
+    );
+    result.push({
+      money,
+      odds: this.odds + this.step * n
+    });
   }
   return sum(result);
 };
@@ -42,8 +53,8 @@ Ball.prototype.getTotal = function() {
 
 let profit = 100; //每次获取的利润
 let odds = 3; // 赔率
-let count = 5; // 次数
-
-let ball = new Ball(odds, profit, count);
+let count = 8; // 次数
+let step = 0.4;
+let ball = new Ball(odds, profit, count, step);
 console.log(ball.getTotal());
 console.log(ball.getItems());
