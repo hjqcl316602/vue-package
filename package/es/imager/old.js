@@ -271,9 +271,17 @@ Image$.prototype.getSize = function(src) {
  */
 Image$.prototype.transformSize = function(size) {
   if (!Number.isInteger(size) || size < 0) {
-    throw new Error("The argument must be int number and must be not less than 0.");
+    throw new Error(
+      "The argument must be int number and must be not less than 0."
+    );
   }
-  let storage = [{ unit: "B", scaler: 1 }, { unit: "KB", scaler: 1024 }, { unit: "MB", scaler: 1024 * 1024 }, { unit: "GB", scaler: 1024 * 1024 * 1024 }, { unit: "TB", scaler: 1024 * 1024 * 1024 * 1024 }];
+  let storage = [
+    { unit: "B", scaler: 1 },
+    { unit: "KB", scaler: 1024 },
+    { unit: "MB", scaler: 1024 * 1024 },
+    { unit: "GB", scaler: 1024 * 1024 * 1024 },
+    { unit: "TB", scaler: 1024 * 1024 * 1024 * 1024 }
+  ];
   let res = {
     value: 0,
     unit: ""
@@ -411,12 +419,18 @@ Image$.prototype.transformBlob = function(src, type = "image/png") {
  * @param { type = image/png } [ string ] 文件的类型，最好是先知道文件的类型，相同类型之间的压缩会更准确
  * @return: [ string ] base64
  */
-Image$.prototype.getCompressQuality = function(src, quality = 0.7, type = "image/png") {
+Image$.prototype.getCompressQuality = function(
+  src,
+  quality = 0.7,
+  type = "image/png"
+) {
   if (typeof src !== "string") {
     throw new Error("The first argument must be string.");
   }
   if (typeof quality !== "number" || quality < 0 || quality > 1) {
-    throw new Error("The second argument must be number , and it must not less than 0 and not greate than 1.");
+    throw new Error(
+      "The second argument must be number , and it must not less than 0 and not greate than 1."
+    );
   }
   if (typeof type !== "string") {
     throw new Error("The third argument must be string.");
@@ -461,7 +475,9 @@ Image$.prototype.getCompressWidth = function(src, width, type = "image/png") {
     throw new Error("The first argument must be string.");
   }
   if (typeof width !== "number" || width < 0) {
-    throw new Error("The second argument must be number , and it must not less than 0.");
+    throw new Error(
+      "The second argument must be number , and it must not less than 0."
+    );
   }
   if (typeof type !== "string") {
     throw new Error("The third argument must be string.");
@@ -504,7 +520,9 @@ Image$.prototype.getCompressHeight = function(src, height, type = "image/png") {
     throw new Error("The first argument must be string.");
   }
   if (typeof height !== "number" || height < 0) {
-    throw new Error("The second argument must be number , and it must not less than 0.");
+    throw new Error(
+      "The second argument must be number , and it must not less than 0."
+    );
   }
   if (typeof type !== "string") {
     throw new Error("The third argument must be string.");
@@ -544,15 +562,24 @@ Image$.prototype.getCompressHeight = function(src, height, type = "image/png") {
  * @return: [ string ] base64
  * @msg  图片会被挤压
  */
-Image$.prototype.getCompressAspect = function(src, width, height, type = "image/png") {
+Image$.prototype.getCompressAspect = function(
+  src,
+  width,
+  height,
+  type = "image/png"
+) {
   if (typeof src !== "string") {
     throw new Error("The first argument must be string.");
   }
   if (typeof width !== "number" || width < 0) {
-    throw new Error("The second argument must be number , and it must not less than 0.");
+    throw new Error(
+      "The second argument must be number , and it must not less than 0."
+    );
   }
   if (typeof height !== "number" || height < 0) {
-    throw new Error("The third argument must be number , and it must not less than 0.");
+    throw new Error(
+      "The third argument must be number , and it must not less than 0."
+    );
   }
   if (typeof type !== "string") {
     throw new Error("The fourth argument must be string.");
@@ -590,12 +617,18 @@ Image$.prototype.getCompressAspect = function(src, width, height, type = "image/
  * @param { type = image/png } [ string ]
  * @return  [ string ] base64
  */
-Image$.prototype.getCompressRatio = function(src, ratio = 1.0, type = "image/png") {
+Image$.prototype.getCompressRatio = function(
+  src,
+  ratio = 1.0,
+  type = "image/png"
+) {
   if (typeof src !== "string") {
     throw new Error("The first argument must be string.");
   }
   if (typeof ratio !== "number" || ratio < 0) {
-    throw new Error("The second argument must be number , and it must not less than 0.");
+    throw new Error(
+      "The second argument must be number , and it must not less than 0."
+    );
   }
   if (typeof type !== "string") {
     throw new Error("The third argument must be string.");
@@ -635,15 +668,24 @@ Image$.prototype.getCompressRatio = function(src, ratio = 1.0, type = "image/png
  * @param { type = image/png } [ string ]
  * @return [ string ] base64
  */
-Image$.prototype.getCompressSize = function(src, size = 200 * 1024, range = 100, type = "image/png") {
+Image$.prototype.getCompressSize = function(
+  src,
+  size = 200 * 1024,
+  range = 100,
+  type = "image/png"
+) {
   if (typeof src !== "string") {
     throw new Error("The first argument must be string.");
   }
   if (typeof size !== "number" || size < 0) {
-    throw new Error("The second argument must be number , and it must not less than 0.");
+    throw new Error(
+      "The second argument must be number , and it must not less than 0."
+    );
   }
   if (typeof range !== "number" || range < 0) {
-    throw new Error("The third argument must be number , and it must not less than 0.");
+    throw new Error(
+      "The third argument must be number , and it must not less than 0."
+    );
   }
   if (typeof type !== "string") {
     throw new Error("The fourth argument must be string.");

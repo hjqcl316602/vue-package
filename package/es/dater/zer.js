@@ -5,6 +5,9 @@
  */
 
 export default function zer(value) {
-  if (Number.isInteger(value) || value < 0) throw new Error("The argument must be int number , and it must be not less than 0.");
+  if (!Number.isInteger(value) || value < 0)
+    throw new Error(
+      "The argument must be int number , and it must be not less than 0."
+    );
   return value < 10 ? "0" + value : +value;
 }

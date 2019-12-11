@@ -6,8 +6,11 @@
  * @LastEditors: Please set LastEditors
  */
 "use strict";
+const basis = require("./basis");
 const path = require("path");
 const utils = require("./utils");
+require("babel-polyfill");
+
 const config = require("../config");
 const vueLoaderConfig = require("./vue-loader.conf");
 
@@ -18,7 +21,7 @@ function resolve(dir) {
 module.exports = {
   context: path.resolve(__dirname, "../"),
   entry: {
-    app: "./product-exchange-abutment/main.js"
+    app: ["babel-polyfill", basis.appEntry]
   },
   output: {
     path: config.build.assetsRoot,
@@ -32,7 +35,7 @@ module.exports = {
     extensions: [".js", ".vue", ".json"],
     alias: {
       vue$: "vue/dist/vue.esm.js",
-      "@": resolve("product-exchange-abutment"),
+      "@": resolve(basis.appRoot),
       "@package": resolve("package")
     }
   },

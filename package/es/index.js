@@ -11,9 +11,12 @@ import funer from "./funer/index.js";
 import number from "./number/index.js";
 import regexer from "./regexer/index.js";
 //import ajax from './ajax/d6.js';
+
 import langer from "./langer/index.js";
 import imager from "./imager/index.js";
 import storager from "./storager/index.js";
+import csv from "./csv/index.js";
+
 /**
  * 类式 - 需要实例化才能使用
  */
@@ -40,6 +43,7 @@ export {
   langer,
   imager,
   storager,
+  csv,
   Hexer,
   Urler,
   Queryer,
