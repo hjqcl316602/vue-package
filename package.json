@@ -21,7 +21,7 @@
     "build:es": "webpack --config build/webpack.dist.es.config.js"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "element-resize-detector": "^1.1.15",
     "qs": "^6.7.0",
